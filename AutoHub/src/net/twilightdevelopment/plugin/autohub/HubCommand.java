@@ -30,7 +30,7 @@ public class HubCommand implements CommandExecutor {
 				) {
 			
 			if (sender instanceof Player) {
-				if (Main.isHubSet == true) {
+				if (plugin.getConfig().contains("hub")) {
 			double x = plugin.getConfig().getDouble("hub.x");
 			double y = plugin.getConfig().getDouble("hub.y");
 			double z = plugin.getConfig().getDouble("hub.z");
@@ -42,7 +42,7 @@ public class HubCommand implements CommandExecutor {
 			player.sendMessage(plugin.getConfig().getString("hubmessage"));
 			return true;
 			}
-				else if (Main.isHubSet == false) {
+				else if (plugin.getConfig().contains("hub")) {
 					Player player = (Player) sender;
 					player.sendMessage(ChatColor.RED + "Hub is not set. Set it using /sethub!");
 				}
@@ -107,6 +107,7 @@ public class HubCommand implements CommandExecutor {
 			plugin.getConfig().set("hub.z", z);
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
+			plugin.reloadConfig();
 			player.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -141,6 +142,7 @@ public class HubCommand implements CommandExecutor {
 			plugin.getConfig().set("hub.z", z);
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
+			plugin.reloadConfig();
 			player.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -173,6 +175,7 @@ public class HubCommand implements CommandExecutor {
 			plugin.getConfig().set("hub.z", z);
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
+			plugin.reloadConfig();
 			console.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -205,6 +208,7 @@ public class HubCommand implements CommandExecutor {
 			plugin.getConfig().set("hub.z", z);
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
+			plugin.reloadConfig();
 			console.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -219,7 +223,9 @@ public class HubCommand implements CommandExecutor {
 			plugin.getConfig().set("hub.x", player.getLocation().getX());
 			plugin.getConfig().set("hub.y", player.getLocation().getY());
 			plugin.getConfig().set("hub.z", player.getLocation().getZ());
+			plugin.getConfig().set("hub.world", player.getWorld().getName());
 			plugin.saveConfig();
+			plugin.reloadConfig();
 			player.sendMessage(ChatColor.GREEN + "Hub location set!");
 			
 			return true;

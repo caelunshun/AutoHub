@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
-public static boolean isHubSet;
+
 	public void onEnable() {
 		
 		
@@ -15,7 +15,7 @@ public static boolean isHubSet;
 		getCommand("hub").setExecutor(new HubCommand(this));
 		getCommand("sethub").setExecutor(new HubCommand(this));
 		saveDefaultConfig();
-		isHubSet = getConfig().contains("hub.x");
+		
 		
 	}
 	
