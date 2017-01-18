@@ -26,8 +26,11 @@ public class HubCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("hub") && sender.hasPermission("autohub.tphub")
 				&& plugin.getConfig().getBoolean("hubcommand") == true
-				&& plugin.getConfig().getBoolean("bungeecord") == false) {
+				&& plugin.getConfig().getBoolean("bungeecord") == false
+				) {
+			
 			if (sender instanceof Player) {
+				if (Main.isHubSet == true) {
 			double x = plugin.getConfig().getDouble("hub.x");
 			double y = plugin.getConfig().getDouble("hub.y");
 			double z = plugin.getConfig().getDouble("hub.z");
@@ -39,10 +42,14 @@ public class HubCommand implements CommandExecutor {
 			player.sendMessage(plugin.getConfig().getString("hubmessage"));
 			return true;
 			}
+				else if (Main.isHubSet == false) {
+					Player player = (Player) sender;
+					player.sendMessage(ChatColor.RED + "Hub is not set. Set it using /sethub!");
+				}
+			}
 			else {
 				sender.sendMessage("This command must be executed by a player.");
 			}
-			
 		}
 		
 		
@@ -91,7 +98,7 @@ public class HubCommand implements CommandExecutor {
 			
 			}
 			catch(NumberFormatException e) {
-			player.sendMessage(ChatColor.YELLOW + "ERROR: To execute this command from the console, you must do /sethub <x> <y> <z> <world> (world is optional, if not specified it will default to the world named 'world').");
+			player.sendMessage(ChatColor.YELLOW + "ERROR: To execute this command, you must do /sethub <x> <y> <z> <world> (world is optional, if not specified it will default to the world named 'world').");
 			
 			}
 			
@@ -125,7 +132,7 @@ public class HubCommand implements CommandExecutor {
 			
 			}
 			catch(NumberFormatException e) {
-			player.sendMessage(ChatColor.YELLOW + "ERROR: To execute this command from the console, you must do /sethub <x> <y> <z> <world> (world is optional, if not specified it will default to the world named 'world').");
+			player.sendMessage(ChatColor.YELLOW + "ERROR: To execute this command, you must do /sethub <x> <y> <z> <world> (world is optional, if not specified it will default to the world named 'world').");
 			
 			}
 			
