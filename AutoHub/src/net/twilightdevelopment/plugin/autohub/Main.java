@@ -13,7 +13,6 @@ public class Main extends JavaPlugin {
 		
 		getCommand("hub").setExecutor(new HubCommand(this));
 		getCommand("sethub").setExecutor(new HubCommand(this));
-		saveConfig();
 		saveDefaultConfig();
 		
 	}
