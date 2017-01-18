@@ -71,18 +71,7 @@ public class HubCommand implements CommandExecutor {
 		
 		
 		
-		else if (cmd.getName().equalsIgnoreCase("sethub") && sender instanceof Player && sender.hasPermission("autohub.set")
-				&& args.length == 0) {
-				Player player = (Player) sender;
-				
-				plugin.getConfig().set("hub.x", player.getLocation().getX());
-				plugin.getConfig().set("hub.y", player.getLocation().getY());
-				plugin.getConfig().set("hub.z", player.getLocation().getZ());
-				plugin.saveConfig();
-				player.sendMessage(ChatColor.GREEN + "Hub location set!");
-				
-				return true;
-	}
+		
 		
 		
 		else if (cmd.getName().equalsIgnoreCase("sethub") && sender instanceof Player && sender.hasPermission("autohub.set")
@@ -214,6 +203,20 @@ public class HubCommand implements CommandExecutor {
 		
 			return true;
 		}
+		
+		
+	else if (cmd.getName().equalsIgnoreCase("sethub") && sender instanceof Player && sender.hasPermission("autohub.set")
+			&& args.length == 0) {
+			Player player = (Player) sender;
+			
+			plugin.getConfig().set("hub.x", player.getLocation().getX());
+			plugin.getConfig().set("hub.y", player.getLocation().getY());
+			plugin.getConfig().set("hub.z", player.getLocation().getZ());
+			plugin.saveConfig();
+			player.sendMessage(ChatColor.GREEN + "Hub location set!");
+			
+			return true;
+}
 	
 	return false;
 }
