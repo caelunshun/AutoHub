@@ -15,7 +15,8 @@ public class Main extends JavaPlugin {
 		getCommand("sethub").setExecutor(new HubCommand(this));
 		saveConfig();
 		saveDefaultConfig();
-		}
+		
+	}
 	
 	public void onDisable() {
 		saveDefaultConfig();

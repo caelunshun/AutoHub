@@ -71,7 +71,8 @@ public class HubCommand implements CommandExecutor {
 		
 		
 		
-		else if (cmd.getName().equalsIgnoreCase("sethub") && sender instanceof Player && sender.hasPermission("autohub.set")) {
+		else if (cmd.getName().equalsIgnoreCase("sethub") && sender instanceof Player && sender.hasPermission("autohub.set")
+				&& args.length == 0) {
 				Player player = (Player) sender;
 				
 				plugin.getConfig().set("hub.x", player.getLocation().getX());
@@ -83,6 +84,72 @@ public class HubCommand implements CommandExecutor {
 				return true;
 	}
 		
+		
+		else if (cmd.getName().equalsIgnoreCase("sethub") && sender instanceof Player && sender.hasPermission("autohub.set")
+				&& args.length == 3) {
+			Player player = (Player) sender;
+			double x = 0;
+			double y = 64;
+			double z = 0;
+			String w = "world";
+		
+			
+			try {
+			x = Double.parseDouble(args[0]);
+			y = Double.parseDouble(args[1]);
+			z = Double.parseDouble(args[2]);
+
+			
+			}
+			catch(NumberFormatException e) {
+			player.sendMessage(ChatColor.YELLOW + "ERROR: To execute this command from the console, you must do /sethub <x> <y> <z> <world> (world is optional, if not specified it will default to the world named 'world').");
+			
+			}
+			
+			plugin.getConfig().set("hub.x", x);
+			plugin.getConfig().set("hub.y", y);
+			plugin.getConfig().set("hub.z", z);
+			plugin.getConfig().set("hub.world", w);
+			plugin.saveConfig();
+			player.sendMessage(ChatColor.GREEN + "Hub set.");
+			
+		
+			return true;
+			
+		}
+		
+		
+		else if (cmd.getName().equalsIgnoreCase("sethub") && sender instanceof Player && sender.hasPermission("autohub.set")
+				&& args.length == 4) {
+			Player player = (Player) sender;
+			double x = 0;
+			double y = 64;
+			double z = 0;
+			String w = args[3];
+		
+			
+			try {
+			x = Double.parseDouble(args[0]);
+			y = Double.parseDouble(args[1]);
+			z = Double.parseDouble(args[2]);
+			
+			
+			}
+			catch(NumberFormatException e) {
+			player.sendMessage(ChatColor.YELLOW + "ERROR: To execute this command from the console, you must do /sethub <x> <y> <z> <world> (world is optional, if not specified it will default to the world named 'world').");
+			
+			}
+			
+			plugin.getConfig().set("hub.x", x);
+			plugin.getConfig().set("hub.y", y);
+			plugin.getConfig().set("hub.z", z);
+			plugin.getConfig().set("hub.world", w);
+			plugin.saveConfig();
+			player.sendMessage(ChatColor.GREEN + "Hub set.");
+			
+		
+			return true;
+		}
 		
 		
 		else if (cmd.getName().equalsIgnoreCase("sethub") && args.length == 4) {
@@ -97,7 +164,7 @@ public class HubCommand implements CommandExecutor {
 			x = Double.parseDouble(args[0]);
 			y = Double.parseDouble(args[1]);
 			z = Double.parseDouble(args[2]);
-			w = args[3];
+			
 			
 			}
 			catch(NumberFormatException e) {
@@ -129,7 +196,7 @@ public class HubCommand implements CommandExecutor {
 			x = Double.parseDouble(args[0]);
 			y = Double.parseDouble(args[1]);
 			z = Double.parseDouble(args[2]);
-			w = "world";
+			
 			
 			}
 			catch(NumberFormatException e) {
