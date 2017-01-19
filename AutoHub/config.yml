@@ -1,6 +1,5 @@
 #The location of the hub.
 hub:
-   
   
 #Setting the following to true will teleport the user to the hub server (BungeeCord required) instead of a location in the current server.
 #Note that if this is set to true the tponjoin option will not work.

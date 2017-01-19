@@ -30,7 +30,7 @@ public class HubCommand implements CommandExecutor {
 				) {
 			
 			if (sender instanceof Player) {
-				if (plugin.getConfig().contains("hub")) {
+				if (Main.isHubSet == true) {
 			double x = plugin.getConfig().getDouble("hub.x");
 			double y = plugin.getConfig().getDouble("hub.y");
 			double z = plugin.getConfig().getDouble("hub.z");
@@ -84,6 +84,7 @@ public class HubCommand implements CommandExecutor {
 		else if (cmd.getName().equalsIgnoreCase("sethub") && sender instanceof Player && sender.hasPermission("autohub.set")
 				&& args.length == 3) {
 			Player player = (Player) sender;
+			
 			double x = 0;
 			double y = 64;
 			double z = 0;
@@ -101,13 +102,17 @@ public class HubCommand implements CommandExecutor {
 			player.sendMessage(ChatColor.YELLOW + "ERROR: To execute this command, you must do /sethub <x> <y> <z> <world> (world is optional, if not specified it will default to the world named 'world').");
 			
 			}
-			
+			plugin.getConfig().createSection("hub.x");
+			plugin.getConfig().createSection("hub.y");
+			plugin.getConfig().createSection("hub.z");
+			plugin.getConfig().createSection("hub.world");
 			plugin.getConfig().set("hub.x", x);
 			plugin.getConfig().set("hub.y", y);
 			plugin.getConfig().set("hub.z", z);
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
 			plugin.reloadConfig();
+			Main.setHub(plugin);
 			player.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -136,13 +141,17 @@ public class HubCommand implements CommandExecutor {
 			player.sendMessage(ChatColor.YELLOW + "ERROR: To execute this command, you must do /sethub <x> <y> <z> <world> (world is optional, if not specified it will default to the world named 'world').");
 			
 			}
-			
+			plugin.getConfig().createSection("hub.x");
+			plugin.getConfig().createSection("hub.y");
+			plugin.getConfig().createSection("hub.z");
+			plugin.getConfig().createSection("hub.world");
 			plugin.getConfig().set("hub.x", x);
 			plugin.getConfig().set("hub.y", y);
 			plugin.getConfig().set("hub.z", z);
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
 			plugin.reloadConfig();
+			Main.setHub(plugin);
 			player.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -169,13 +178,17 @@ public class HubCommand implements CommandExecutor {
 			console.sendMessage(ChatColor.YELLOW + "ERROR: To execute this command from the console, you must do /sethub <x> <y> <z> <world> (world is optional, if not specified it will default to the world named 'world').");
 			
 			}
-			
+			plugin.getConfig().createSection("hub.x");
+			plugin.getConfig().createSection("hub.y");
+			plugin.getConfig().createSection("hub.z");
+			plugin.getConfig().createSection("hub.world");
 			plugin.getConfig().set("hub.x", x);
 			plugin.getConfig().set("hub.y", y);
 			plugin.getConfig().set("hub.z", z);
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
 			plugin.reloadConfig();
+			Main.setHub(plugin);
 			console.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -202,13 +215,17 @@ public class HubCommand implements CommandExecutor {
 			console.sendMessage(ChatColor.YELLOW + "ERROR: To execute this command from the console, you must do /sethub <x> <y> <z> <world> (world is optional, if not specified it will default to the world named 'world').");
 		
 			}
-			
+			plugin.getConfig().createSection("hub.x");
+			plugin.getConfig().createSection("hub.y");
+			plugin.getConfig().createSection("hub.z");
+			plugin.getConfig().createSection("hub.world");
 			plugin.getConfig().set("hub.x", x);
 			plugin.getConfig().set("hub.y", y);
 			plugin.getConfig().set("hub.z", z);
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
 			plugin.reloadConfig();
+			Main.setHub(plugin);
 			console.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -219,13 +236,17 @@ public class HubCommand implements CommandExecutor {
 	else if (cmd.getName().equalsIgnoreCase("sethub") && sender instanceof Player && sender.hasPermission("autohub.set")
 			&& args.length == 0) {
 			Player player = (Player) sender;
-			
+			plugin.getConfig().createSection("hub.x");
+			plugin.getConfig().createSection("hub.y");
+			plugin.getConfig().createSection("hub.z");
+			plugin.getConfig().createSection("hub.world");
 			plugin.getConfig().set("hub.x", player.getLocation().getX());
 			plugin.getConfig().set("hub.y", player.getLocation().getY());
 			plugin.getConfig().set("hub.z", player.getLocation().getZ());
 			plugin.getConfig().set("hub.world", player.getWorld().getName());
 			plugin.saveConfig();
 			plugin.reloadConfig();
+			Main.setHub(plugin);
 			player.sendMessage(ChatColor.GREEN + "Hub location set!");
 			
 			return true;

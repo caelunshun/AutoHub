@@ -22,7 +22,7 @@ public class Join implements Listener {
 		
 		if (plugin.getConfig().getBoolean("tponjoin") == true && joiner.hasPermission("autohub.bypass") == false
 				&& plugin.getConfig().getBoolean("bungeecord") == false
-				&& plugin.getConfig().contains("hub")) {
+				&& Main.isHubSet == true) {
 			double x = plugin.getConfig().getDouble("hub.x");
 			double y = plugin.getConfig().getDouble("hub.y");
 			double z = plugin.getConfig().getDouble("hub.z");
