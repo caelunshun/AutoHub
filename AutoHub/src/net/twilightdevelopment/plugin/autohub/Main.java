@@ -19,6 +19,8 @@ public class Main extends JavaPlugin {
 		saveDefaultConfig();
 		setHub(this);
 		
+		@SuppressWarnings("unused")
+		API instance = new API(this);
 		
 	}
 	
