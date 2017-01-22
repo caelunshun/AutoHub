@@ -49,8 +49,8 @@ public class UpdaterMain extends BukkitRunnable {
 				console.sendMessage("[AutoHub] Plugin is up to date.");
 			}
 			in.close();
-		} catch (IOException e) {e.printStackTrace(); System.out.println(e.getMessage());}
-		catch(Exception e) {e.printStackTrace(); System.out.println(e.getMessage());}
+		} catch (IOException e) {}
+		catch(Exception e) {}
 		  
 			
 		

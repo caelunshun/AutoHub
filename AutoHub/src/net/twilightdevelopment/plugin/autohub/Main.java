@@ -27,7 +27,7 @@ public class Main extends JavaPlugin {
 		
 		try {
 			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).runTaskTimer(this, 20, 72000);
-		} catch(Exception e) {e.printStackTrace();}
+		} catch(Exception e) {}
 		
 	}
 	
