@@ -1,7 +1,10 @@
 package net.twilightdevelopment.plugin.autohub;
 
+import java.net.InetAddress;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import net.twilightdevelopment.plugin.autohub.updater.UpdaterMain;
 
 public class Main extends JavaPlugin {
 
@@ -22,6 +25,10 @@ public class Main extends JavaPlugin {
 		@SuppressWarnings("unused")
 		API instance = new API(this);
 		
+		try {
+			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).runTaskTimer(this, 20, 72000);
+		} catch(Exception e) {e.printStackTrace();}
+		
 	}
 	
 	public void onDisable() {
@@ -40,4 +47,19 @@ public class Main extends JavaPlugin {
 			isHubSet = false;
 		}
 	}
-}
+	
+	
+	
+	
+	
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+
