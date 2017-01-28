@@ -8,11 +8,9 @@ import java.util.Scanner;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import net.md_5.bungee.api.ChatColor;
 
-public class UpdaterMain extends BukkitRunnable {
+public class UpdaterMain extends Thread {
 	
 	InetAddress ip;
 	int port = 63125;
@@ -25,9 +23,11 @@ public class UpdaterMain extends BukkitRunnable {
 	
 	
 	public void run() {
-		Socket s = getSocket(port);
+		
 		
 		try {
+			Socket s = getSocket(port);
+			if (s != null) {
 			Scanner in = new Scanner(s.getInputStream());
 			
 			PrintWriter out = new PrintWriter(s.getOutputStream(), true);
@@ -41,18 +41,23 @@ public class UpdaterMain extends BukkitRunnable {
 			
 			String currentVersion = plugin.getDescription().getVersion();
 			ConsoleCommandSender console = Bukkit.getConsoleSender();
-			if (!newVersion.equals(currentVersion)) console.sendMessage(ChatColor.AQUA
+			if (!newVersion.equals(currentVersion)) { console.sendMessage(ChatColor.AQUA
 					+ "[AutoHub] "
 					+ "A new version is available! " 
-					+ "Download it at https://www.spigotmc.org/resources/extracommands.35102/");
+					+ "Download it at https://www.spigotmc.org/resources/autohub.34966/");
+			}
 			else {
 				console.sendMessage("[AutoHub] Plugin is up to date.");
 			}
+			
 			in.close();
+			}
 		} catch (IOException e) {}
 		catch(Exception e) {}
 		  
-			
+			try {
+				Thread.sleep(36000);
+			} catch (InterruptedException e) {}
 		
 	}
 	
@@ -61,7 +66,7 @@ public class UpdaterMain extends BukkitRunnable {
 		try {
 			s = new Socket(ip, port);
 			return s;
-		} catch (IOException e) {e.printStackTrace(); System.out.println(e.getMessage());}
+		} catch (Exception e) {}
 		return null;
 		
 		

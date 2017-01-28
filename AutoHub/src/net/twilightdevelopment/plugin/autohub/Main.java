@@ -26,7 +26,7 @@ public class Main extends JavaPlugin {
 		API instance = new API(this);
 		
 		try {
-			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).runTaskTimer(this, 20, 72000);
+			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).start();
 		} catch(Exception e) {}
 		
 	}
