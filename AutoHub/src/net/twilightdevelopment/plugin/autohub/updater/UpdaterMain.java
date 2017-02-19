@@ -56,7 +56,7 @@ public class UpdaterMain extends Thread {
 		catch(Exception e) {}
 		  
 			try {
-				Thread.sleep(36000);
+				Thread.sleep(1000 * (60 * 60));
 			} catch (InterruptedException e) {}
 		}
 	}
