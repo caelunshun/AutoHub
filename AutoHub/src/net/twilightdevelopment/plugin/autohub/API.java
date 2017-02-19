@@ -18,7 +18,7 @@ public class API {
 	
 	
 	public static boolean tpToHub(Player player) {
-		if(Main.isHubSet == true) {
+		if(AutoHub.isHubSet == true) {
 			
 			double x = plugin.getConfig().getDouble("hub.x");
 			double y = plugin.getConfig().getDouble("hub.y");

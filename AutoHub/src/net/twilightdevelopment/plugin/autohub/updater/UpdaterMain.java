@@ -23,7 +23,7 @@ public class UpdaterMain extends Thread {
 	
 	
 	public void run() {
-		
+		while(true) {
 		
 		try {
 			Socket s = getSocket(port);
@@ -58,7 +58,7 @@ public class UpdaterMain extends Thread {
 			try {
 				Thread.sleep(36000);
 			} catch (InterruptedException e) {}
-		
+		}
 	}
 	
 	private Socket getSocket(int port) {

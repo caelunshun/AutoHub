@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.twilightdevelopment.plugin.autohub.updater.UpdaterMain;
 
-public class Main extends JavaPlugin {
+public class AutoHub extends JavaPlugin {
 
 	public static boolean isHubSet = false;
 

@@ -30,7 +30,7 @@ public class HubCommand implements CommandExecutor {
 				) {
 			
 			if (sender instanceof Player) {
-				if (Main.isHubSet == true) {
+				if (AutoHub.isHubSet == true) {
 			double x = plugin.getConfig().getDouble("hub.x");
 			double y = plugin.getConfig().getDouble("hub.y");
 			double z = plugin.getConfig().getDouble("hub.z");
@@ -112,7 +112,7 @@ public class HubCommand implements CommandExecutor {
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
 			plugin.reloadConfig();
-			Main.setHub(plugin);
+			AutoHub.setHub(plugin);
 			player.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -151,7 +151,7 @@ public class HubCommand implements CommandExecutor {
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
 			plugin.reloadConfig();
-			Main.setHub(plugin);
+			AutoHub.setHub(plugin);
 			player.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -188,7 +188,7 @@ public class HubCommand implements CommandExecutor {
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
 			plugin.reloadConfig();
-			Main.setHub(plugin);
+			AutoHub.setHub(plugin);
 			console.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -225,7 +225,7 @@ public class HubCommand implements CommandExecutor {
 			plugin.getConfig().set("hub.world", w);
 			plugin.saveConfig();
 			plugin.reloadConfig();
-			Main.setHub(plugin);
+			AutoHub.setHub(plugin);
 			console.sendMessage(ChatColor.GREEN + "Hub set.");
 			
 		
@@ -246,7 +246,7 @@ public class HubCommand implements CommandExecutor {
 			plugin.getConfig().set("hub.world", player.getWorld().getName());
 			plugin.saveConfig();
 			plugin.reloadConfig();
-			Main.setHub(plugin);
+			AutoHub.setHub(plugin);
 			player.sendMessage(ChatColor.GREEN + "Hub location set!");
 			
 			return true;

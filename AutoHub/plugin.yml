@@ -1,7 +1,7 @@
 name: AutoHub
-version: 1.0.5
+version: 1.0.6
 author: gzx
-main: net.twilightdevelopment.plugin.autohub.Main
+main: net.twilightdevelopment.plugin.autohub.AutoHub
 
 commands:
   sethub:
