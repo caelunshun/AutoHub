@@ -48,7 +48,7 @@ public class API {
 	 * @return The set join message - null if it's not set.
 	 */
 	public static String getJoinMessage() {
-		return plugin.getConfig().getString("hubmessage");
+		return plugin.getConfig().getString("joinmessage");
 	}
 	
 }
