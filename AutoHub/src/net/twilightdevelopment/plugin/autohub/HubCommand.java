@@ -25,12 +25,12 @@ public class HubCommand implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("hub") && sender.hasPermission("autohub.tphub")
-				&& plugin.getConfig().getBoolean("hubcommand") == true
-				&& plugin.getConfig().getBoolean("bungeecord") == false
+				&& plugin.getConfig().getBoolean("hubcommand")
+				&& !(plugin.getConfig().getBoolean("bungeecord"))
 				) {
 			
 			if (sender instanceof Player) {
-				if (AutoHub.isHubSet == true) {
+				if (AutoHub.isHubSet) {
 			double x = plugin.getConfig().getDouble("hub.x");
 			double y = plugin.getConfig().getDouble("hub.y");
 			double z = plugin.getConfig().getDouble("hub.z");
@@ -47,9 +47,9 @@ public class HubCommand implements CommandExecutor {
 					player.sendMessage(ChatColor.RED + "Hub is not set. Set it using /sethub!");
 				}
 			}
-			else {
+			else 
 				sender.sendMessage("This command must be executed by a player.");
-			}
+			
 		}
 		
 		

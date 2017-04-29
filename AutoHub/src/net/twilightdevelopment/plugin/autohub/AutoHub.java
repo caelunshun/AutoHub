@@ -10,8 +10,9 @@ public class AutoHub extends JavaPlugin {
 
 	public static boolean isHubSet = false;
 
+	public static AutoHub instance;
 	public void onEnable() {
-		
+		instance = this;
 		
 		Bukkit.getServer().getPluginManager().registerEvents(new Join(this), this);
 		
@@ -21,9 +22,6 @@ public class AutoHub extends JavaPlugin {
 		getCommand("sethub").setExecutor(new HubCommand(this));
 		saveDefaultConfig();
 		setHub(this);
-		
-		@SuppressWarnings("unused")
-		API instance = new API(this);
 		
 		try {
 			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).start();
@@ -43,13 +41,15 @@ public class AutoHub extends JavaPlugin {
 			isHubSet = true;
 			
 		}
-		else {
+		else 
 			isHubSet = false;
-		}
+		
 	}
 	
 	
-	
+	public static AutoHub getInstance() {
+		return instance;
+	}
 	
 	
 		

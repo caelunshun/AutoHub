@@ -20,9 +20,9 @@ public class Join implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player joiner = event.getPlayer();
 		
-		if (plugin.getConfig().getBoolean("tponjoin") == true && joiner.hasPermission("autohub.bypass") == false
-				&& plugin.getConfig().getBoolean("bungeecord") == false
-				&& AutoHub.isHubSet == true) {
+		if (plugin.getConfig().getBoolean("tponjoin") && !(joiner.hasPermission("autohub.bypass"))
+				&& !(plugin.getConfig().getBoolean("bungeecord"))
+				&& AutoHub.isHubSet) {
 			double x = plugin.getConfig().getDouble("hub.x");
 			double y = plugin.getConfig().getDouble("hub.y");
 			double z = plugin.getConfig().getDouble("hub.z");

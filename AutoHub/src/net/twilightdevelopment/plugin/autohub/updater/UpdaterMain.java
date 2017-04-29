@@ -46,9 +46,9 @@ public class UpdaterMain extends Thread {
 					+ "A new version is available! " 
 					+ "Download it at https://www.spigotmc.org/resources/autohub.34966/");
 			}
-			else {
+			else 
 				console.sendMessage("[AutoHub] Plugin is up to date.");
-			}
+			
 			
 			in.close();
 			}
