@@ -1,8 +1,0 @@
-<project name="AutoHub" basedir=".">
-<target name="createJARFile>
-<jar destfile="./AutoHub.jar" basedir="./AutoHub">
-<fileset file="./AutoHub/plugin.yml">
-<fileset file="./AutoHub/config.yml>
-</jar>
-</target>
-</project>
