@@ -1,6 +1,7 @@
 <project name="AutoHub">
 <target name="createJARFile">
   <mkdir dir="./AutoHub/classes"/>
+  <javadoc sourcepath="./AutoHub/src" destdir="./AutoHub/docs"/>
 <javac srcdir="./AutoHub/src" destdir ="./AutoHub/classes">
   <classpath> <pathelement location="spigot-api-1.11.2-R0.1-SNAPSHOT-shaded.jar"/> </classpath>
   </javac>
@@ -8,5 +9,6 @@
 <fileset file="./AutoHub/plugin.yml"/>
 <fileset file="./AutoHub/config.yml"/>
 </jar>
+  <jar destfile="AutoHub-JavaDoc.jar" basedir="./AutoHub/docs"/>
 </target>
 </project>
