@@ -1,7 +1,8 @@
 <target name="createJARFile">
+  <mkdir dir="./AutoHub/classes"/>
 <javac srcdir="./AutoHub/src" destdir ="./AutoHub/classes" />
-<jar destfile="./AutoHub.jar" basedir="./AutoHub">
-<fileset file="./AutoHub/plugin.yml">
-<fileset file="./AutoHub/config.yml>
+<jar destfile="./AutoHub.jar" basedir="./AutoHub/classes">
+<fileset file="./AutoHub/plugin.yml"/>
+<fileset file="./AutoHub/config.yml"/>
 </jar>
 </target>
