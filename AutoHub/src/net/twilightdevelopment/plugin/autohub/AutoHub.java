@@ -3,10 +3,12 @@ package net.twilightdevelopment.plugin.autohub;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.twilightdevelopment.plugin.autohub.updater.UpdaterMain;
+
 public class AutoHub extends JavaPlugin {
 
 	public static boolean isHubSet = false;
-
+	
 	public static AutoHub instance;
 	public void onEnable() {
 		instance = this;
@@ -20,9 +22,8 @@ public class AutoHub extends JavaPlugin {
 		saveDefaultConfig();
 		setHub();
 		
-		try {
-			//new UpdaterMain(InetAddress.getByName("localhost"), this).start();
-		} catch(Exception e) {}
+		if (getConfig().getBoolean("update-checker"))
+			Bukkit.getScheduler().runTaskAsynchronously(this, new UpdaterMain(this));
 		
 	}
 	
@@ -47,8 +48,6 @@ public class AutoHub extends JavaPlugin {
 	public static AutoHub getInstance() {
 		return instance;
 	}
-	
-	
 		
 		
 	}

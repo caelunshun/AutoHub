@@ -1,76 +1,52 @@
 package net.twilightdevelopment.plugin.autohub.updater;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.*;
-import java.util.Scanner;
-
 import org.bukkit.Bukkit;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-import net.md_5.bungee.api.ChatColor;
 
-public class UpdaterMain extends Thread {
-	
-	InetAddress ip;
-	int port = 63125;
-	private final JavaPlugin plugin;
-	
-	public UpdaterMain (InetAddress ip, JavaPlugin plugin) {
-		this.ip = ip;
+public class UpdaterMain implements Runnable {
+	private JavaPlugin plugin;
+	private String currentVersion;
+
+	private static final String API_URL = "https://api.spigotmc.org/legacy/general.php?resource=";
+	private static final String PREFIX = "[AutoHub] ";
+	private static final String RESOURCE_ID = "34966";
+
+	public UpdaterMain(JavaPlugin plugin) {
 		this.plugin = plugin;
+		this.currentVersion = this.plugin.getDescription().getVersion();
 	}
-	
-	
+
 	public void run() {
-		while(true) {
-		
-		try {
-			Socket s = getSocket(port);
-			if (s != null) {
-			Scanner in = new Scanner(s.getInputStream());
-			
-			PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-			
-			out.println("version autohub");
-			String newVersion = null;
-			
-			
-			newVersion = in.next();
-			
-			
-			String currentVersion = plugin.getDescription().getVersion();
-			ConsoleCommandSender console = Bukkit.getConsoleSender();
-			if (!newVersion.equals(currentVersion)) { console.sendMessage(ChatColor.AQUA
-					+ "[AutoHub] "
-					+ "A new version is available! " 
-					+ "Download it at https://www.spigotmc.org/resources/autohub.34966/");
-			}
-			else 
-				console.sendMessage("[AutoHub] Plugin is up to date.");
-			
-			
-			in.close();
-			}
-		} catch (IOException e) {}
-		catch(Exception e) {}
-		  
+		boolean newVersionFound = false;
+		while (!newVersionFound) {
+			HttpURLConnection con = null;
+			BufferedReader reader = null;
 			try {
-				Thread.sleep(36000);
-			} catch (InterruptedException e) {}
+				URL url = new URL(API_URL + RESOURCE_ID);
+				con = (HttpURLConnection) url.openConnection();
+				con.setRequestMethod("GET");
+				con.setReadTimeout(20 * 1000);
+
+				con.connect();
+				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				String latestVersion = reader.readLine();
+
+				if (latestVersion != null && !currentVersion.equals(latestVersion)) {
+					Bukkit.getConsoleSender().sendMessage(
+							PREFIX + "A new version is available! Please download it from the plugin resource page; "
+									+ "you will receive no support regarding old versions of the plugin.");
+					newVersionFound = true;
+					
+					// Check every hour
+					Thread.sleep(1000 * 60 * 60); 
+				}
+			} catch (Exception e) {
+				if (con != null)
+					con.disconnect();
+			}
 		}
 	}
-	
-	private Socket getSocket(int port) {
-		Socket s;
-		try {
-			s = new Socket(ip, port);
-			return s;
-		} catch (Exception e) {}
-		return null;
-		
-		
-		
-	}
-	
 }

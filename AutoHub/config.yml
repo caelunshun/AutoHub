@@ -21,6 +21,9 @@ tponjoin: true
 #The message to be sent to the player after joining
 joinmessage: Welcome!
 
+#Enable the update checker?
+update-checker: true
+
 
 
 
