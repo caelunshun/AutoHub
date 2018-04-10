@@ -40,9 +40,9 @@ public class UpdaterMain implements Runnable {
 				String latestVersion = reader.readLine();
 
 				if (latestVersion != null && !currentVersion.equals(latestVersion)) {
-					Bukkit.getConsoleSender().sendMessage(
-							PREFIX + ChatColor.AQUA + "A new version is available! Please download it from the plugin resource page; "
-									+ "you will receive no support regarding old versions of the plugin.");
+					Bukkit.getConsoleSender().sendMessage(String.format(
+							PREFIX + ChatColor.AQUA + "A new version (%s) is available! Please download it from the plugin resource page; "
+									+ "you will receive no support regarding old versions of the plugin.", latestVersion));
 					newVersionFound = true;
 				}
 			} catch (Exception e) {
