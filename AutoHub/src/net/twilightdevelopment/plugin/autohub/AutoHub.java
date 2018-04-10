@@ -1,10 +1,7 @@
 package net.twilightdevelopment.plugin.autohub;
 
-import java.net.InetAddress;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import net.twilightdevelopment.plugin.autohub.updater.UpdaterMain;
 
 public class AutoHub extends JavaPlugin {
 
@@ -21,10 +18,10 @@ public class AutoHub extends JavaPlugin {
 		getCommand("hub").setExecutor(new HubCommand(this));
 		getCommand("sethub").setExecutor(new HubCommand(this));
 		saveDefaultConfig();
-		setHub(this);
+		setHub();
 		
 		try {
-			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).start();
+			//new UpdaterMain(InetAddress.getByName("localhost"), this).start();
 		} catch(Exception e) {}
 		
 	}
@@ -32,12 +29,12 @@ public class AutoHub extends JavaPlugin {
 	public void onDisable() {
 		saveDefaultConfig();
 	}
-	public static void setHub(JavaPlugin plugin) {
+	public void setHub() {
 		
-		if (plugin.getConfig().contains("hub.x")
-				&& plugin.getConfig().contains("hub.y")
-				&& plugin.getConfig().contains("hub.z")
-				&& plugin.getConfig().contains("hub.world")) {
+		if (instance.getConfig().contains("hub.x")
+				&& instance.getConfig().contains("hub.y")
+				&& instance.getConfig().contains("hub.z")
+				&& instance.getConfig().contains("hub.world")) {
 			isHubSet = true;
 			
 		}

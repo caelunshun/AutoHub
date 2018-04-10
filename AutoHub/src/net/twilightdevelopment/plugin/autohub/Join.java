@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class Join implements Listener {
 
 	private final JavaPlugin plugin;
@@ -29,7 +31,7 @@ public class Join implements Listener {
 			String world = plugin.getConfig().getString("hub.world");
 			
 			joiner.teleport(new Location(Bukkit.getWorld(world), x, y, z));
-			joiner.sendMessage(plugin.getConfig().getString("joinmessage"));
+			joiner.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("joinmessage")));
 			
 		}
 	}
