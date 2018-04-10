@@ -40,15 +40,18 @@ public class UpdaterMain implements Runnable {
 				String latestVersion = reader.readLine();
 
 				if (latestVersion != null && !currentVersion.equals(latestVersion)) {
-					Bukkit.getConsoleSender().sendMessage(String.format(
-							PREFIX + ChatColor.AQUA + "A new version (%s) is available! Please download it from the plugin resource page; "
-									+ "you will receive no support regarding old versions of the plugin.", latestVersion));
+					Bukkit.getConsoleSender()
+							.sendMessage(String.format(
+									PREFIX + ChatColor.AQUA
+											+ "A new version (%s) is available! Please download it from the plugin resource page; "
+											+ "you will receive no support regarding old versions of the plugin.",
+									latestVersion));
 					newVersionFound = true;
 				}
 			} catch (Exception e) {
 				if (con != null)
 					con.disconnect();
-				
+
 				// DEBUG
 				e.printStackTrace();
 			}
@@ -56,8 +59,8 @@ public class UpdaterMain implements Runnable {
 			try {
 				Thread.sleep(1000 * 60 * 60);
 			} catch (InterruptedException e) {
-				
-			} 
+
+			}
 		}
 	}
 }
