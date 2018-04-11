@@ -51,9 +51,6 @@ public class UpdaterMain implements Runnable {
 			} catch (Exception e) {
 				if (con != null)
 					con.disconnect();
-
-				// DEBUG
-				e.printStackTrace();
 			}
 			// Check every hour
 			try {
