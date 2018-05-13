@@ -1,1 +1,4 @@
 language: java
+before_script:
+- cd AutoHutoHUB
+script: mvn clean install
