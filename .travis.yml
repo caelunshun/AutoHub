@@ -3,7 +3,7 @@ before_script:
 - cd AutoHub
 script: mvn clean install
 deploy:
-  provider: rele
+  provider: releases
   file_glob: true
   file: */target/*.jar
   api-key:
