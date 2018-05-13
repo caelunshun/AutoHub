@@ -2,3 +2,10 @@ language: java
 before_script:
 - cd AutoHub
 script: mvn clean install
+deploy:
+  provider: releases
+  api_key:
+    secure: wF8AKtZDPhDJ41EbduJY1BDLY+9f8X8dgA3qWK98ssLVTXV/Ljsd8pq+CtKkIkaglUSkzFZQAT2ecxydNCFHB0YJDXbKWvWsTB2NQbVgRa2Ty/aT8VVMdx6YW3+jwTjZFNkOIPXUuEujO6sTxMBoAlEzv+hA+M9XrfybKArYQTJZ1krVj5EpTshWF8kTDLKlv5fmvQJq1HwFdkrXUXu9dvmscnLNBSd65ikQ7S7RVBQulQ+MqNUaZfsf6zZ0vz3tBgUIkWJ8j6J084P6dV/OSI6TM10BU4smC+b7ndaRpz6/2SXwjkPA99laMZZeLrnPvzvh5rukob8LfOrTVfeO8dAyAAFTCogqFOAaBG6O4OHdrgUWkFN7y4ozrz4Uab0HJ+xWR4aTbGXcblc/dXTAlHYojuCxVvnClYSmSUBE6Gr2bcmrskEtlbT4jJq2orNmbP3CgwAB9rzBSVUvKlv0se1D/9Bis9ADOTEh9WCZ+Kzhb1NumqCVFwOOXLwr9RHOOo8I56vNj1pWpIA1yIYi7hOw9E1hrB1rccNVr8/HMi90lEqLPHUjYxlpmaF3UHCpZKL0Hn86JQt2ahv+VKDoKRptaiBcMFAHa7wGc2Yj0LY9e64u/gZPRoo5KTLQCYjyM1ZLtB+pyZTddutDXJC8S5+d5ZZ/rSUcVHGB8TxmSUI=
+  file: target/AutoHub*.jar
+  on:
+    repo: Caelum100/AutoHub
