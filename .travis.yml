@@ -5,6 +5,6 @@ script: mvn clean install
 deploy:
   provider: releases
   file_glob: true
-  file: */target/*.jar
+  file: "*/target/*.jar"
   api-key:
       secure: "Csfb0H3VUzSHR9Lsmr7TeD3hlnOD0qT5audRNqCILj5iupNLcXKgIIiQ0Pz7mMpPHnz1dETg8DzRNgkOKWUyFv9nWzSUL2Y56fzRgiuQgLnTyeFx6IVa9pthRB6E4hPanddLXQaPkTOBPHc6HkjTJgjkNF//xvZL6b9/y8bX5cgnwwC73KOIF2HIVQVWs06cjp6Khv6gK97gF6TILxo7URFhroz1rSVpBsY3aj1sn+RiSpl2G6kniCTt/nwb8qRSZIpzOFGIjQtrfI2LTlugwaW5IPQh0h5LjfEZTU5SJrof5yXF47OWCOMxv5qkQg0vJ5oyMxhPW0Eaq7NgCGg5QOx1djGhHxQulGiiXLkTd9z6vInjYRKnuC7XNlFkaO65d80pLM6prqo/wQRkjB0IqRjgQ8+/w1+xCGR9haVoSUNHTMaRj0eUyUsRGHwCcwcb/EzdD8w7FFnvXjCStbQVlP9HXKLT1ppjLj4cbHR+BU5IXz7Q4bar5vvku84d2NjrAXTLOyhuVWOcnFUbWV0XTGCoDLD09yT1cAF5oBFcXyCSWvn3wsHCQtUH8IXBUnRBsd6r4RApGcpc52IIIyacJluMRjxYZnOGQ7oDIXCUJouSjyC58x4qvqyVO/aAHDnoYrnI2yVLAg60QnhTVkGpfbYBxT1N3kftucCkFW6O/do="
