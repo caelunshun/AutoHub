@@ -11,17 +11,19 @@ bungeeserver:
 #Set this to true if you want /hub to work, false if you want it disabled
 hubcommand: true
 
-#The message to be sent to the player after doing /hub
-#Only will be sent if they are telported to a location on the same server; if they are moved to another server using BungeeCord this will not do anything
+# The message to be sent to the player after doing /hub.
+# Only will be sent if they are telported to a location
+# on the same server; if they are moved to another server
+# using BungeeCord this will not do anything
 hubmessage: You have been teleported to the lobby!
 
-#Make the player teleport to the hub location on join?
+# Make the player teleport to the hub location on join?
 tponjoin: true
 
-#The message to be sent to the player after joining
-joinmessage: Welcome!
+# The message to be sent to the player after joining
+joinmessage: '&4Welcome!'
 
-#Enable the update checker?
+# Enable the update checker?
 update-checker: true
 
 

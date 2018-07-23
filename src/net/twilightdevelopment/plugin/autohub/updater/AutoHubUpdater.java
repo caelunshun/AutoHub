@@ -43,7 +43,7 @@ public class AutoHubUpdater implements Runnable {
 					Bukkit.getConsoleSender()
 							.sendMessage(String.format(
 									PREFIX + ChatColor.AQUA
-											+ "A new version (%s) is available! Please download it from the plugin resource page; "
+											+ "A new version (v%s) is available! Please download it from the plugin resource page; "
 											+ "you will receive no support regarding old versions of the plugin.",
 									latestVersion));
 					newVersionFound = true;
