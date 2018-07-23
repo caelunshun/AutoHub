@@ -30,8 +30,8 @@ public class SetHubCommand implements CommandExecutor {
 
     if (plugin.getConfig().getBoolean("bungeecord")) {
       sender.sendMessage(ChatColor.GOLD + "Warning: BungeeCord mode is enabled in the configuration. Players will" +
-              "not be teleported to the location you are setting; they will be teleported to the server specified" +
-              "in the configuration.");
+              " not be teleported to the location you are setting; they will be teleported to the server specified" +
+              " in the configuration.");
     }
     double x = 0;
     double y = 0;
