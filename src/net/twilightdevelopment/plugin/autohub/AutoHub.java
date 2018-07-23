@@ -7,8 +7,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class AutoHub extends JavaPlugin {
 
   public static boolean isHubSet = false;
-
+  public static boolean newVersionFound = false;
   public static AutoHub instance;
+
+  private static final long UPDATE_INTERVAL = 20 * 60 * 60;
 
   public void onEnable() {
     instance = this;
@@ -23,7 +25,8 @@ public class AutoHub extends JavaPlugin {
     setHub();
 
     if (getConfig().getBoolean("update-checker"))
-      Bukkit.getScheduler().runTaskAsynchronously(this, new AutoHubUpdater(this));
+      Bukkit.getScheduler().runTaskTimerAsynchronously(this, new AutoHubUpdater(this), 0,
+              UPDATE_INTERVAL);
   }
 
   public void onDisable() {

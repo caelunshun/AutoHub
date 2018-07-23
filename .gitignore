@@ -71,4 +71,5 @@ hs_err_pid*
 
 *.ipr
 *.iws
+*.iml
 .idea
