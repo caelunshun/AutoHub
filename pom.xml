@@ -4,7 +4,9 @@
     <groupId>net.twilightdevelopment.plugin</groupId>
     <artifactId>AutoHub</artifactId>
     <version>1.2</version>
+    <name>AutoHub</name>
     <build>
+        <finalName>${project.name}-v${project.version}</finalName>
         <sourceDirectory>src</sourceDirectory>
         <plugins>
             <plugin>
