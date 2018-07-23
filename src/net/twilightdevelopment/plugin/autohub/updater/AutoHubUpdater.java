@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class UpdaterMain implements Runnable {
+public class AutoHubUpdater implements Runnable {
 	private JavaPlugin plugin;
 	private String currentVersion;
 
@@ -19,7 +19,7 @@ public class UpdaterMain implements Runnable {
 	private static final String PREFIX = "[AutoHub] ";
 	private static final String RESOURCE_ID = "34966";
 
-	public UpdaterMain(JavaPlugin plugin) {
+	public AutoHubUpdater(JavaPlugin plugin) {
 		this.plugin = plugin;
 		this.currentVersion = this.plugin.getDescription().getVersion();
 	}

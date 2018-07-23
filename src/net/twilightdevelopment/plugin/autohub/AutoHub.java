@@ -1,6 +1,6 @@
 package net.twilightdevelopment.plugin.autohub;
 
-import net.twilightdevelopment.plugin.autohub.updater.UpdaterMain;
+import net.twilightdevelopment.plugin.autohub.updater.AutoHubUpdater;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,7 +23,7 @@ public class AutoHub extends JavaPlugin {
     setHub();
 
     if (getConfig().getBoolean("update-checker"))
-      Bukkit.getScheduler().runTaskAsynchronously(this, new UpdaterMain(this));
+      Bukkit.getScheduler().runTaskAsynchronously(this, new AutoHubUpdater(this));
   }
 
   public void onDisable() {
