@@ -54,10 +54,10 @@ public class HubCommand implements CommandExecutor {
 				sender.sendMessage(
 						ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("hubmessage")));
 				ByteArrayDataOutput out = ByteStreams.newDataOutput();
-				String servy = plugin.getConfig().getString("bungeeserver");
+				String server = plugin.getConfig().getString("bungeeserver");
 
 				out.writeUTF("Connect");
-				out.writeUTF(servy);
+				out.writeUTF(server);
 
 				Player player = (Player) sender;
 				player.sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
