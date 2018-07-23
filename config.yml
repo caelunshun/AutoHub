@@ -1,14 +1,14 @@
-#The location of the hub.
+# The location of the hub.
 hub:
   
-#Setting the following to true will teleport the user to the hub server (BungeeCord required) instead of a location in the current server.
-#Note that if this is set to true the tponjoin option will not work.
+# Setting the following to true will teleport the user to the hub server (BungeeCord required) instead of a location in the current server.
+# Note that if this is set to true the tponjoin option will not work.
 bungeecord: false 
 
-#If BungeeCord is set to true, fill in te name of the hub server here
+# If BungeeCord is set to true, fill in te name of the hub server here
 bungeeserver:
 
-#Set this to true if you want /hub to work, false if you want it disabled
+# Set this to true if you want /hub to work, false if you want it disabled
 hubcommand: true
 
 # The message to be sent to the player after doing /hub.
@@ -21,7 +21,7 @@ hubmessage: You have been teleported to the lobby!
 tponjoin: true
 
 # The message to be sent to the player after joining
-joinmessage: '&4Welcome!'
+joinmessage: '&6Welcome!'
 
 # Enable the update checker?
 update-checker: true
