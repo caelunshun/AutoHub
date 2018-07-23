@@ -38,7 +38,7 @@ public class HubCommand implements CommandExecutor {
 					player.sendMessage(
 							ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("hubmessage")));
 					return true;
-				} else if (plugin.getConfig().contains("hub")) {
+				} else {
 					Player player = (Player) sender;
 					player.sendMessage(ChatColor.RED + "Error: Hub is not set. Set it using /sethub!");
 				}

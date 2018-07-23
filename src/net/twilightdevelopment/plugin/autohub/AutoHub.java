@@ -34,7 +34,6 @@ public class AutoHub extends JavaPlugin {
   }
 
   public void setHub() {
-
     if (instance.getConfig().contains("hub.x")
         && instance.getConfig().contains("hub.y")
         && instance.getConfig().contains("hub.z")
