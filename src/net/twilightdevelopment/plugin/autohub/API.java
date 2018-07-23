@@ -4,6 +4,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+/**
+ * @deprecated This class is mostly useless
+ * and full of static abuse.
+ */
 public class API {
 	private static AutoHub plugin = AutoHub.getInstance();
 
