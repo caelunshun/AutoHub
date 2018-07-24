@@ -20,8 +20,7 @@ public class SetHubCommand implements CommandExecutor {
   private JavaPlugin plugin;
   private static final String USAGE_MESSAGE =
       ChatColor.RED
-          + "To execute this command, you must do /sethub <x> <y> <z> <world>"
-          + " (world is optional; if not specified it will default to the world named 'world'";
+          + "Usage: /sethub <x> <y> <z> [world]";
 
   public SetHubCommand(JavaPlugin plugin) {
     this.plugin = plugin;
