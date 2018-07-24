@@ -1,5 +1,8 @@
 package net.twilightdevelopment.plugin.autohub;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -7,10 +10,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
-
-import net.md_5.bungee.api.ChatColor;
+import java.util.Collections;
+import java.util.List;
 
 public class HubCommand implements CommandExecutor {
 
@@ -68,4 +69,8 @@ public class HubCommand implements CommandExecutor {
 		}
 		return true;
 	}
+
+	public List<String> tabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+	  return Collections.emptyList();
+  }
 }

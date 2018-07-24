@@ -1,5 +1,5 @@
-name: AutoHub
-version: 1.2
+name: ${project.name}
+version: ${project.version}
 author: gzx
 main: net.twilightdevelopment.plugin.autohub.AutoHub
 api-version: 1.13
@@ -7,9 +7,11 @@ api-version: 1.13
 commands:
   sethub:
     description: Sets the hub location
+    usage: /sethub <x> <y> <z> [world]
     
   hub:
     description: Teleports player to the hub location, or, if set, the server set in the config
+    usage: /hub
     
 permissions:
   autohub.set:

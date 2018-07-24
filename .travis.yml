@@ -1,4 +1,0 @@
-language: java
-before_script:
-- cd AutoHub
-script: mvn clean install

@@ -1,7 +1,9 @@
 package net.twilightdevelopment.plugin.autohub;
 
 import net.twilightdevelopment.plugin.autohub.updater.AutoHubUpdater;
+import org.bstats.bukkit.MetricsLite;
 import org.bukkit.Bukkit;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class AutoHub extends JavaPlugin {
@@ -15,12 +17,23 @@ public class AutoHub extends JavaPlugin {
   public void onEnable() {
     instance = this;
 
+    MetricsLite metrics = new MetricsLite(this);
+
     Bukkit.getServer().getPluginManager().registerEvents(new Join(this), this);
 
     Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
-    getCommand("hub").setExecutor(new HubCommand(this));
-    getCommand("sethub").setExecutor(new SetHubCommand(this));
+    PluginCommand cmdHub = getCommand("hub");
+    PluginCommand cmdSetHub = getCommand("sethub");
+
+    HubCommand cmdHubImpl = new HubCommand(this);
+    SetHubCommand cmdSetHubImpl = new SetHubCommand(this);
+    cmdHub.setExecutor(cmdHubImpl);
+    cmdSetHub.setExecutor(cmdSetHubImpl);
+
+    cmdHub.setTabCompleter(cmdHubImpl::tabComplete);
+    cmdSetHub.setTabCompleter(cmdSetHubImpl::tabComplete);
+
     saveDefaultConfig();
     setHub();
 

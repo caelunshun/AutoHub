@@ -9,11 +9,17 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.StringUtil;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class SetHubCommand implements CommandExecutor {
 
   private JavaPlugin plugin;
-  private static final String USAGE_MESSAGE = ChatColor.RED
+  private static final String USAGE_MESSAGE =
+      ChatColor.RED
           + "To execute this command, you must do /sethub <x> <y> <z> <world>"
           + " (world is optional; if not specified it will default to the world named 'world'";
 
@@ -29,9 +35,11 @@ public class SetHubCommand implements CommandExecutor {
     }
 
     if (plugin.getConfig().getBoolean("bungeecord")) {
-      sender.sendMessage(ChatColor.GOLD + "Warning: BungeeCord mode is enabled in the configuration. Players will" +
-              " not be teleported to the location you are setting; they will be teleported to the server specified" +
-              " in the configuration.");
+      sender.sendMessage(
+          ChatColor.GOLD
+              + "Warning: BungeeCord mode is enabled in the configuration. Players will"
+              + " not be teleported to the location you are setting; they will be teleported to the server specified"
+              + " in the configuration.");
     }
     double x = 0;
     double y = 0;
@@ -99,5 +107,16 @@ public class SetHubCommand implements CommandExecutor {
     plugin.saveConfig();
     plugin.reloadConfig();
     ((AutoHub) plugin).setHub();
+  }
+
+  public List<String> tabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+    if (args.length == 4) {
+      List<String> result = new ArrayList<>();
+      StringUtil.copyPartialMatches(
+          args[3], ArrayUtil.applyModification(Bukkit.getWorlds(), World::getName), result);
+      return result;
+    }
+
+    return Collections.emptyList();
   }
 }

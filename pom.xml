@@ -3,8 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.twilightdevelopment.plugin</groupId>
     <artifactId>AutoHub</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
     <name>AutoHub</name>
+
     <build>
         <finalName>${project.name}-v${project.version}</finalName>
         <sourceDirectory>src</sourceDirectory>
@@ -17,13 +18,36 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.bstats</pattern>
+                                    <shadedPattern>net.twilightdevelopment.plugin.autohub.lib.bstats</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <resources>
             <resource>
                 <directory>.</directory>
                 <includes>
-                    <include>*.yml</include>
+                    <include>plugin.yml</include>
+                    <include>config.yml</include>
                 </includes>
+                <filtering>true</filtering>
             </resource>
         </resources>
     </build>
@@ -32,18 +56,33 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>luck-repo</id>
+            <url>https://repo.lucko.me/</url>
+        </repository>
+        <repository>
+            <id>bstats-repo</id>
+            <url>http://repo.bstats.org/content/repositories/releases/</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.13-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>1.13-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit-lite</artifactId>
+            <version>1.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
