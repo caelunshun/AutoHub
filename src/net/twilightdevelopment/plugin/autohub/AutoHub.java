@@ -25,21 +25,25 @@ public class AutoHub extends JavaPlugin {
 
     PluginCommand cmdHub = getCommand("hub");
     PluginCommand cmdSetHub = getCommand("sethub");
+    PluginCommand cmdAutoHub = getCommand("autohub");
 
     HubCommand cmdHubImpl = new HubCommand(this);
     SetHubCommand cmdSetHubImpl = new SetHubCommand(this);
+    AutoHubCommand cmdAutoHubImpl = new AutoHubCommand();
     cmdHub.setExecutor(cmdHubImpl);
     cmdSetHub.setExecutor(cmdSetHubImpl);
+    cmdAutoHub.setExecutor(cmdAutoHubImpl);
 
     cmdHub.setTabCompleter(cmdHubImpl::tabComplete);
     cmdSetHub.setTabCompleter(cmdSetHubImpl::tabComplete);
+    cmdAutoHub.setTabCompleter(cmdAutoHubImpl::tabComplete);
 
     saveDefaultConfig();
     setHub();
 
     if (getConfig().getBoolean("update-checker"))
-      Bukkit.getScheduler().runTaskTimerAsynchronously(this, new AutoHubUpdater(this), 0,
-              UPDATE_INTERVAL);
+      Bukkit.getScheduler()
+          .runTaskTimerAsynchronously(this, new AutoHubUpdater(this), 0, UPDATE_INTERVAL);
   }
 
   public void onDisable() {

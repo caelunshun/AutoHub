@@ -12,6 +12,10 @@ commands:
   hub:
     description: Teleports player to the hub location, or, if set, the server set in the config
     usage: /hub
+
+  autohub:
+    description: Base command for AutoHub utility tasks
+    usage: /autohub (reload | info)
     
 permissions:
   autohub.set:
@@ -25,3 +29,11 @@ permissions:
   autohub.bypass:
     description: Players with this permission will not be sent to the hub location when they join.
     default: false
+
+  autohub.reload:
+    description: Allows you to use /autohub reload
+    default: false
+
+  autohub.info:
+    description: Allows you to use /autohub info
+    default: true
